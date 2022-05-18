@@ -1,4 +1,4 @@
-% Iterative finite difference program for 2D viscous deformation, Matlab version
+% Iterative finite difference program for 2D viscous deformation, GNU Octave version
 % This code is free software under the Creative Commons CC-BY-NC-ND license
 % Published in W.R.Halter, E.Macherel, and S.M.Schmalholz (2022) JSG, https://doi.org/10.1016/j.jsg.2022.104617
 clear all, close all, clc
