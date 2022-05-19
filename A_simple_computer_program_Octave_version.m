@@ -34,9 +34,9 @@ P           = zeros(nx,  ny);   ETA         = eta_B*ones(nx, ny);
 % Define elliptical inclusion
 inside      = ((X*cos(phi)+Y*sin(phi)).^2/a^2 + (X*sin(phi)-Y*cos(phi)).^2/b^2 < 1);
 ETA(inside) = eta_B/etaRatio;   etamin      = 0.1*min(ETA(:));
-for smo=1:2; Ii  = [2:nx-1]; % Smoothing of the initial viscosity field
+for smo=1:2; Ii  = [2:nx-1]; Ij  = [2:ny-1]; % Smoothing of the initial viscosity field
     ETA(Ii,:)    = ETA(Ii,:) + 0.4*(ETA(Ii+1,:)-2*ETA(Ii,:)+ETA(Ii-1,:));
-    ETA(:,Ii)    = ETA(:,Ii) + 0.4*(ETA(:,Ii+1)-2*ETA(:,Ii)+ETA(:,Ii-1));
+    ETA(:,Ij)    = ETA(:,Ij) + 0.4*(ETA(:,Ij+1)-2*ETA(:,Ij)+ETA(:,Ij-1));
 end
 ETA_L       = ETA;              ETA_PL      = ETA;
 % Boundary condition
@@ -44,8 +44,8 @@ if     ps==1,   VX    	= -D_B*X_vx;    	VY  	= D_B*Y_vy;
 elseif ps==0,   VX   	=  D_B*Y_vx;    	VY   	=   0*Y_vy; end
 % Parameters for pseudo-transient iterations
 tol         = 5e-6;             error       = 10*tol;
-dpt_P       = 50  *max(dx,dy)^2/max(max(ETA)); % Pseudo time step pressure
-dpt_V       = 0.05*max(dx,dy)^2/max(max(ETA)); % Pseudo time step velocity
+dpt_P       = 50  *min(dx,dy)^2/max(max(ETA)); % Pseudo time step pressure
+dpt_V       = 0.05*min(dx,dy)^2/max(max(ETA)); % Pseudo time step velocity
 Pold        = P;                iter        = 0;
 while error>tol; iter = iter+1; % START of iteration loop
     DXX                 = diff(VX,1,1)/dx;                          % Eq (1)
@@ -68,7 +68,7 @@ while error>tol; iter = iter+1; % START of iteration loop
         ETA_PL_it       = ETA_PL;           % Viscosity of previous iteration step
         ETA_PL          = ETA.*(TII/s_ref).^(1-n_exp);              % Eq (12)
         ETA_PL          = exp(log(ETA_PL)*0.5+log(ETA_PL_it)*0.5);
-        ETA             = 2./( 1./ETA_L + 1./ETA_PL );              % Eq (14)
+        ETA             = 1./( 1./ETA_L + 1./ETA_PL );              % Eq (14)
         ETA(inside)     = ETA_L(inside);    % Power-law viscosity only applied to matrix
         ETA(ETA<etamin) = etamin;           % Minimum viscosity
     end
