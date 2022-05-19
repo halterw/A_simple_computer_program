@@ -22,7 +22,7 @@ P           = zeros(nx,  ny);   ETA         = eta_B*ones(nx, ny);
 % Define elliptical inclusion
 inside      = ((X*cos(phi)+Y*sin(phi)).^2/a^2 + (X*sin(phi)-Y*cos(phi)).^2/b^2 < 1);
 ETA(inside) = eta_B/etaRatio;   etamin      = 0.1*min(ETA(:));
-for smo=1:2; Ii  = [2:nx-1]; Ij  = [2:ny-1];% Smoothing of the initial viscosity field
+for smo=1:2; Ii  = [2:nx-1]; Ij  = [2:ny-1]; % Smoothing of the initial viscosity field
     ETA(Ii,:)    = ETA(Ii,:) + 0.4*(ETA(Ii+1,:)-2*ETA(Ii,:)+ETA(Ii-1,:));
     ETA(:,Ij)    = ETA(:,Ij) + 0.4*(ETA(:,Ij+1)-2*ETA(:,Ij)+ETA(:,Ij-1));
 end
