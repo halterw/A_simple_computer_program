@@ -10,4 +10,4 @@ Published in W.R. Halter, E. Macherel, and S.M. Schmalholz (2022) JSG, https://d
 Please note:
 The authors found an error in the original code versions. 
 The codes on this GitHub page were corrected on 22 June 2022.
-For more details, please see the corrigendum, <link to be added>.
+For more details, please see the corrigendum, https://doi.org/10.1016/j.jsg.2022.104665.
