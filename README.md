@@ -23,9 +23,15 @@ ps          = 1;        % ps = 1 models pure shear; ps = 0 models simple shear
 ```
 
 where in Fig. 6a we activate pure shear, whereas in Fig. 6b we activate simple shear.
+<figure>
+    <img src="figures/Fig_06a_output.png" width="800">
+    <figcaption>Fig. 6a setup: hard rectangular inclusion, pure shear</figcaption>
+</figure>
+<figure>
+    <img src="figures/Fig_06b_output.png" width="800">
+    <figcaption>Fig. 6b: hard rectangular inclusion, simple shear</figcaption>
+</figure>
 
-<img src="figures/Fig_06a_output.png" width="800">
-<img src="figures/Fig_06b_output.png" width="800">
 
 
 
@@ -43,20 +49,30 @@ n_exp       = 5;
 
 where in Fig. 8b we chose a power-law exponent > 1. 
 
-<img src="figures/Fig_08a_output.png" width="800">
-<img src="figures/Fig_08b_output.png" width="800">
+<figure>
+    <img src="figures/Fig_08a_output.png" width="800">
+    <figcaption>Fig. 8a: soft elliptical inclusion, linear viscous</figcaption>
+</figure>
+<figure>
+    <img src="figures/Fig_08b_output.png" width="800">
+    <figcaption>Fig. 8b: soft elliptical inclusion, power-law viscous</figcaption>
+</figure>
+
 
 ### Multiple inclusions
 
-Fig. 9 illustrates the interaction between multiple inclusions. This model configuration is calculated on a higher resolution (901 x 601) and can take multiple hours to fully converge.
+Fig. 9 illustrates the interaction between multiple inclusions. This model configuration is calculated on a higher resolution (901 x 601) and takes multiple hours to fully converge. Results will be added later.
 
-<img src="figures/Fig_9_output.png" width="800">
 
 ### Garnet
 
 In Fig. 10 we want to investigate whether we can infer the pressure field inside and around a rigid garnet porphyroblast. To define the shape of the garnet we created a polygon using Matlab's [ginput](https://ch.mathworks.com/help/matlab/ref/ginput.html) function on a photo of a real rock.
 
-<img src="figures/Fig_10_output.png" width="800">
+<figure>
+    <img src="figures/Fig_10_output.png" width="800">
+    <figcaption>Fig. 10: garnet inclusion</figcaption>
+</figure>
+
 
 Note the error convergence behaviour. In this example, the (absolute) error reaches a plateau before fully converging to the bottom. This behaviour is typical for the pseudo-transient method.
 
@@ -64,8 +80,11 @@ Note the error convergence behaviour. In this example, the (absolute) error reac
 
 In Fig. 11 we show the pressure and stress distribution inside and between 2 separating boudin blocks. Feel free to modify the code visualization to confirm that the horizontal total stress (Sxx) is indeed continuous across the weak gap, as discussed in Halter et al. 2022.
 
-<img src="figures/Fig_11_output.png" width="800">
 
+<figure>
+    <img src="figures/Fig_11_output.png" width="800">
+    <figcaption>Fig. 11: boudinage</figcaption>
+</figure>
 
 ### Computation time
 
@@ -73,13 +92,12 @@ An overview of calculation times obtained on a commercial laptop (Lenovo ThinkPa
 
 | Model configuration                 | Resolution (nx,ny) | Tolerance | Computation time (seconds) |
 |-------------------------------------|--------------------|-----------|----------------------------|
-| Fig. 6a - Rectangle pure shear      | (201,201)          | 1e-6      |                       3397 |
-| Fig. 6b - Rectangle simple shear    | (201,201)          | 1e-6      |                       3714 |
-| Fig. 8a - Ellipse linear viscous    | (201,201)          | 1e-6      |                       4220 |
-| Fig. 8b - Ellipes power-law viscous | (201,201)          | 1e-6      |                       4184 |
-| Fig. 9 - Multiple inclusions        | (901,601)          | 1e-6      |                       TBD  |
-| Fig. 10 - Garnet                    | (301,186)          | 1e-6      |                       7373 |
-| Fig. 11 - Boudinage                 | (201,201)          | 1e-6      |                       4259 |
+| Fig. 6a - Rectangle pure shear      | (201,201)          | 1e-6      |                        450 |
+| Fig. 6b - Rectangle simple shear    | (201,201)          | 1e-6      |                        450 |
+| Fig. 8a - Ellipse linear viscous    | (201,201)          | 1e-6      |                        207 |
+| Fig. 8b - Ellipes power-law viscous | (201,201)          | 1e-6      |                        162 |
+| Fig. 10 - Garnet                    | (301,186)          | 1e-6      |                        803 |
+| Fig. 11 - Boudinage                 | (201,201)          | 1e-6      |                         28 |
 
 Note that there exist other codes using different numerical approaches (e.g., [MDOODZ7.0](https://github.com/tduretz/MDOODZ7.0)) which are capable of solving the same problem much faster. However, as emphasized in Halter et al. 2022, the beauty in our code lies in it's simplicity and readability, making coding accessible and transparent.
 

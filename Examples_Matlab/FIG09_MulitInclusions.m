@@ -80,8 +80,7 @@ elseif ps==0,   VX      =  D_B*Y_vx;        VY      =   0*Y_vy; end
 % Parameters for pseudo-transient iterations
 tol             = 1e-6;             err_absolute    = 1;            err_relative = 1;
 %%% Numerical parameters for iterative solver %%%
-%CFLV            = 1/5;              CFLP            = CFLV/nx/20;   % Numerical parameter for iterative solver
-CFLV            = 1/5;              CFLP            = CFLV/nx/50;   % Numerical parameter for iterative solver
+CFLV            = 1/2.10;           CFLP            = CFLV/nx/25;   % Numerical parameter for iterative solver
 dpt_P           = zeros(nx,ny);
 dpt_Vx          = CFLV./(max(ETA(1:end-1,2:end-1),ETA(2:end,2:end-1))/dx^2 + max(ETA_XY(:,1:end-1),ETA_XY(:,2:end))/dx/dy);
 dpt_Vy          = CFLV./(max(ETA(2:end-1,1:end-1),ETA(2:end-1,2:end))/dy^2 + max(ETA_XY(1:end-1,:),ETA_XY(2:end,:))/dx/dy);
