@@ -1,5 +1,5 @@
 # A simple computer program for calculating stress and strain rate in 2D viscous inclusion-matrix systems
-Iterative finite difference program for 2D viscous deformation.
+Finite difference algorithm using iterative solver to simuLate 2D viscous deformation.
 
 Code versions for [Matlab](https://mathworks.com/en/products/matlab.html) and freely available [GNU Octave](https://octave.org/).
 
@@ -88,7 +88,7 @@ In Fig. 11 we show the pressure and stress distribution inside and between 2 sep
 
 ### Computation time
 
-An overview of calculation times obtained on a commercial laptop (Lenovo ThinkPad P1 gen 3). 
+An overview of approximate calculation times obtained on a commercial laptop (Lenovo ThinkPad P1 gen 3). 
 
 | Model configuration                 | Resolution (nx,ny) | Tolerance | Computation time (seconds) |
 |-------------------------------------|--------------------|-----------|----------------------------|
@@ -98,10 +98,4 @@ An overview of calculation times obtained on a commercial laptop (Lenovo ThinkPa
 | Fig. 8b - Ellipes power-law viscous | (201,201)          | 1e-6      |                        162 |
 | Fig. 10 - Garnet                    | (301,186)          | 1e-6      |                        803 |
 | Fig. 11 - Boudinage                 | (201,201)          | 1e-6      |                         28 |
-
-Note that there exist other codes using different numerical approaches (e.g., [MDOODZ7.0](https://github.com/tduretz/MDOODZ7.0)) which are capable of solving the same problem much faster. However, as emphasized in Halter et al. 2022, the beauty in our code lies in it's simplicity and readability, making coding accessible and transparent.
-
-Also note, that the computation time does not increase with non-linearity. I.e. the necessary computation time for Fig. 8b, using a non-linear rheology, is not higher than for Fig. 8a, using a linear rheology. This illustrates the potential of the pseudo-transient method for solving non-linear problems. A more efficient, accelerated pseudo-transient method, used in high performance computing, is assessed and explained in [Räss et al. 2022](https://doi.org/10.5194/gmd-15-5757-2022).
-
-Our code can serve as an educational basis for the understanding of such an accelerated pseudo-transient method.
 
